@@ -1,45 +1,27 @@
-usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
-           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
-           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
-           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
-           <command> [<args>]
+# Java Code for a Number Guessing Game
 
-These are common Git commands used in various situations:
+The code implements a simple console-based number guessing game where a guesser receive a number from the user as an input, and three players try to guess the same number. The program compares the guess of each player with the guess of the guesser and decides the winner.
 
-start a working area (see also: git help tutorial)
-   clone     Clone a repository into a new directory
-   init      Create an empty Git repository or reinitialize an existing one
+`Guesser` Class: 
 
-work on the current change (see also: git help everyday)
-   add       Add file contents to the index
-   mv        Move or rename a file, a directory, or a symlink
-   restore   Restore working tree files
-   rm        Remove files from the working tree and from the index
+The `Guesser` class is responsible for receiving a number from the user as an input. it has one method, `guessNumber()`, which prompts the user to input a number and returns that number.
 
-examine the history and state (see also: git help revisions)
-   bisect    Use binary search to find the commit that introduced a bug
-   diff      Show changes between commits, commit and working tree, etc
-   grep      Print lines matching a pattern
-   log       Show commit logs
-   show      Show various types of objects
-   status    Show the working tree status
 
-grow, mark and tweak your common history
-   branch    List, create, or delete branches
-   commit    Record changes to the repository
-   merge     Join two or more development histories together
-   rebase    Reapply commits on top of another base tip
-   reset     Reset current HEAD to the specified state
-   switch    Switch branches
-   tag       Create, list, delete or verify a tag object signed with GPG
+`Player` Class: 
 
-collaborate (see also: git help workflows)
-   fetch     Download objects and refs from another repository
-   pull      Fetch from and integrate with another repository or a local branch
-   push      Update remote refs along with associated objects
+The `Player` class is responsible for accepting the player's guess input. It has one method, `playerGuessNumber()`, which prompts the user to input a number and returns that number.
 
-'git help -a' and 'git help -g' list available subcommands and some
-concept guides. See 'git help <command>' or 'git help <concept>'
-to read about a specific subcommand or concept.
-See 'git help git' for an overview of the system.
+
+`Empire` Class: 
+
+The `Empire` class collects the input numbers form the `Guesser` and `Player` classes and compares them to decide the winner. It has three instance variables for the guess number from the guesser and the guesses of each player. It also has three methods: 
+  - `collectFromGuesser()`: This method creates an instance of the `Guesser` class, calls its `guessNumber()` method to get the guess number, and stores it in the `guessNumberfromGuesser` instance variable.
+  - `collectFromPlayer()`: This method creates three instances of the `Player` class, calls their `playerGuessNumber()` methods to get the player's guess, and stores them in the `player1`, `player2`, and `player3` instance variables.
+  - `compareTheNumbers()`: This method compares the guess number from the guesser with the guesses of each player and prints out the winner. If no one guesses the right number, it prints out that all the players lost the game.
+
+
+`LanuchGame` Class
+
+The `LanuchGame` class is the main class that starts the game. It creates an instance of the `Empire` class, calls its `collectFromGuesser()` and `collectFromPlayer()` methods to get the input numbers, and calls its `compareTheNumbers()` method to decide the winner.
+
+N.B: The code could be improved by adding error handling for invalid user input and making the game more interactive by allowing players to enter their names and displaying the winner with their names.
